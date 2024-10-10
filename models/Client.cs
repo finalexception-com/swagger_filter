@@ -26,13 +26,13 @@ public class Client
 
     public Client(string fullName, string direction, string phoneNumber)
     {
-        FullName = fullName;
-        Direction = direction;
+        FullName = fullName.ToLower().Trim(); ;
+        Direction = direction.ToLower().Trim(); ;
         PhoneNumber = phoneNumber;
     }
 
     public Client()
     {
-        
+
     }
 }
