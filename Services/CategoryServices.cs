@@ -49,7 +49,10 @@ public class CategoryServices : ICategoryRepository
             return await GetAll();
         }
 
-        return await _context.Categories.Where(pc => pc.Name.Contains(keyword)).ToListAsync();
+        return await _context.Categories
+    .Where(pc => pc.Name.Contains(keyword) || pc.Description.Contains(keyword))
+    .ToListAsync();
+
     }
 
     public async Task Update(int id, CategoryDTO categoryDTO)
