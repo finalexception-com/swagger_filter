@@ -25,7 +25,7 @@ public class CategoryPutController(ICategoryRepository categoryRepository) : Cat
 
         await categoryRepository.Update(id, updateCategory);
 
-        return NoContent();
+        return Ok(category);
     }
 
 }

@@ -13,9 +13,9 @@ public class CategoryDeleteController(ICategoryRepository categoryRepository) : 
 
     public async Task<IActionResult> Delete(int id)
     {
-        var user = await _categoryRepository.CheckExistence(id);
+        var category = await _categoryRepository.CheckExistence(id);
 
-        if (user == false)
+        if (category == false)
         {
             return NotFound();
         }

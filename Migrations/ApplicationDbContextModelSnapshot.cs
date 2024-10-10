@@ -49,63 +49,113 @@ namespace Product_manager.Migrations
                         new
                         {
                             Id = 1,
-                            Description = "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
-                            Name = "Ian"
+                            Description = "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+                            Name = "Grady"
                         },
                         new
                         {
                             Id = 2,
-                            Description = "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
-                            Name = "Marlon"
+                            Description = "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+                            Name = "Geneva"
                         },
                         new
                         {
                             Id = 3,
-                            Description = "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
-                            Name = "Albert"
+                            Description = "The Football Is Good For Training And Recreational Purposes",
+                            Name = "Tammy"
                         },
                         new
                         {
                             Id = 4,
-                            Description = "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
-                            Name = "Louise"
+                            Description = "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+                            Name = "Leo"
                         },
                         new
                         {
                             Id = 5,
                             Description = "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
-                            Name = "Moses"
+                            Name = "Marcus"
                         },
                         new
                         {
                             Id = 6,
-                            Description = "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
-                            Name = "Muriel"
+                            Description = "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+                            Name = "Deanna"
                         },
                         new
                         {
                             Id = 7,
-                            Description = "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
-                            Name = "Alexander"
+                            Description = "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
+                            Name = "Rick"
                         },
                         new
                         {
                             Id = 8,
-                            Description = "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
-                            Name = "Myrtle"
+                            Description = "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+                            Name = "Paul"
                         },
                         new
                         {
                             Id = 9,
-                            Description = "The Football Is Good For Training And Recreational Purposes",
-                            Name = "Wanda"
+                            Description = "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
+                            Name = "Leland"
                         },
                         new
                         {
                             Id = 10,
-                            Description = "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
-                            Name = "Marta"
+                            Description = "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+                            Name = "Joanna"
                         });
+                });
+
+            modelBuilder.Entity("Product_manager.models.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int")
+                        .HasColumnName("category_id");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(500)
+                        .HasColumnType("varchar(500)")
+                        .HasColumnName("description");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)")
+                        .HasColumnName("name");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("double")
+                        .HasColumnName("price");
+
+                    b.Property<int>("Stock")
+                        .HasColumnType("int")
+                        .HasColumnName("stock");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("products");
+                });
+
+            modelBuilder.Entity("Product_manager.models.Product", b =>
+                {
+                    b.HasOne("Product_manager.models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
                 });
 #pragma warning restore 612, 618
         }

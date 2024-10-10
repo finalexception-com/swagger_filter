@@ -20,7 +20,7 @@ public class CateforyPostController(ICategoryRepository categoryRepository) : Ca
 
             await categoryRepository.Create(newCategory);
 
-            return Ok("Customer added successfully.");
+            return Ok("Category added successfully.");
         }
 
 }
