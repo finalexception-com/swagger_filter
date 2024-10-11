@@ -35,14 +35,14 @@ public class CategoryGetController(ICategoryRepository categoryRepository) : Cat
     {
         if (string.IsNullOrWhiteSpace(keyword))
         {
-            return BadRequest("La palabra clave no puede estar vasia");
+            return BadRequest("La palabra clave no puede estar vacia");
         }
 
         var category = await _categoryRepository.GetByKeyword(keyword);
 
         if (!category.Any())
         {
-            return NotFound("no se encontraron usuarios con concidencias");
+            return NotFound("no se encontraron Categorias con concidencias");
         }
 
         return Ok(category);
