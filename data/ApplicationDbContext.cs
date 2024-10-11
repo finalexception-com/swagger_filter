@@ -1,5 +1,4 @@
 
-
 using Microsoft.EntityFrameworkCore;
 using Product_manager.models;
 using Product_manager.Seeders;
@@ -9,7 +8,7 @@ public class ApplicationDbContext : DbContext
 {
     public DbSet<Category> Categories { get; set; }
     public DbSet<Product> Products { get; set; }
-     public DbSet<Client> Clients { get; set; }
+    public DbSet<Client> Clients { get; set; }
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {
 
@@ -20,6 +19,7 @@ public class ApplicationDbContext : DbContext
         base.OnModelCreating(modelBuilder);
         CategorySeeder.Seed(modelBuilder);
         ProductSeeder.Seed(modelBuilder);
+        ClientSeeder.Seed(modelBuilder);
     }
 
 }
