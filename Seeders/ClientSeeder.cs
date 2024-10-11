@@ -16,11 +16,11 @@ public class ClientSeeder
     public static IEnumerable<Client> GenerateClients(int count)
     {
         var faker = new Faker<Client>()
-            .RuleFor(a => a.Id, f => f.IndexFaker + 1) // ID incremental
-            .RuleFor(a => a.FullName, f => f.Person.FullName) // Nombre completo
-            .RuleFor(a => a.Direction, f => f.Address.FullAddress()) // Dirección completa
-            .RuleFor(a => a.PhoneNumber, f => f.Phone.PhoneNumber()); // Número de teléfono
-        return faker.Generate(count); // Genera 'count' clientes
+            .RuleFor(a => a.Id, f => f.IndexFaker + 1) 
+            .RuleFor(a => a.FullName, f => f.Person.FullName)
+            .RuleFor(a => a.Direction, f => f.Address.FullAddress()) 
+            .RuleFor(a => a.PhoneNumber, f => f.Phone.PhoneNumber()); 
+        return faker.Generate(count);
     }
 
 }
