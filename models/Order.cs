@@ -12,7 +12,7 @@ public class Order
     public int Id { get; set; }
 
     [Column("order_day")]
-    public DateOnly OrderDay { get; set; }
+    public DateTime OrderDay { get; set; }
 
     [Column("client_id")]
     public int ClientId { get; set; }
@@ -28,7 +28,7 @@ public class Order
 
     public virtual ICollection<OrderProduct> OrderProducts { get; set; } = new List<OrderProduct>();
 
-    public Order(DateOnly orderDay, int clientId, string clientName, string clientDirection, string clientPhone)
+    public Order(DateTime orderDay, int clientId, string clientName, string clientDirection, string clientPhone)
     {
         OrderDay = orderDay;
         ClientId = clientId;
