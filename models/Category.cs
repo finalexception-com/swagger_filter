@@ -19,6 +19,10 @@ public class Category
     [Column("description")]
     [MaxLength(500)]
     public string? Description { get; set; }
+
+    public virtual ICollection<Product> Products { get; set; } = new List<Product>();
+
+
     public Category(string name, string? description = null)
     {
         Name = name.ToLower().Trim();
