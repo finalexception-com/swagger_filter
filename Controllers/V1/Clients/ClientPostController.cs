@@ -11,15 +11,15 @@ namespace Product_manager.Controllers.V1.Clients;
 public class ClientPostController(IClientRepository clientRepository) : ClientController(clientRepository)
 {
     [HttpPost]
-        public async Task<IActionResult> AddClient(ClientDTO newClient)
+    public async Task<IActionResult> AddClient(ClientDTO newClient)
+    {
+        if (!ModelState.IsValid)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            await clientRepository.Create(newClient);
-
-            return Ok("Client added successfully.");
+            return BadRequest(ModelState);
         }
+
+        await clientRepository.Create(newClient);
+
+        return Ok("Client added successfully.");
+    }
 }

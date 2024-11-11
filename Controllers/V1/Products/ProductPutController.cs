@@ -1,10 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Product_manager.DTOs;
-using Product_manager.models;
 using Product_manager.Reposiroties;
 
 namespace Product_manager.Controllers.V1.Products;

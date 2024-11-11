@@ -9,8 +9,8 @@ public interface ICategoryRepository
     Task<IEnumerable<Category>> GetAll();
     Task<Category?> GetById(int id);
     Task<IEnumerable<Category>> GetByKeyword(string keyword);
-    Task<Category> Create(CategoryDTO categoryDTO);
+    Task<Category> Create(CreateCategoryDTO categoryDTO);
     Task Update(int id, CategoryDTO categoryDTO);
     Task Delete(int id);
-    Task<bool> CheckExistence(int id);
+    Task<bool> Remove(int id);
 }

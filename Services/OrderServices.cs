@@ -56,16 +56,16 @@ public class OrderServices
     }
 
     public async Task Update(int id, OrderDTO orderDTO)
-{
-    var order = await GetById(id);
-    if (order == null) return;
+    {
+        var order = await GetById(id);
+        if (order == null) return;
 
-    order.ClientName = orderDTO.ClientName.ToLower().Trim();
-    order.ClientDirection = orderDTO.ClientDirection.ToLower().Trim();
-    order.ClientPhone = orderDTO.ClientPhone;
-    
-    await _context.SaveChangesAsync();
-}
+        order.ClientName = orderDTO.ClientName.ToLower().Trim();
+        order.ClientDirection = orderDTO.ClientDirection.ToLower().Trim();
+        order.ClientPhone = orderDTO.ClientPhone;
+
+        await _context.SaveChangesAsync();
+    }
     public async Task<bool> CheckExistence(int id)
     {
         try

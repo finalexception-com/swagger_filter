@@ -6,22 +6,15 @@ namespace Product_manager.Controllers.V1.Categories;
 [ApiController]
 [Route("api/v1/categories")]
 [ApiExplorerSettings(GroupName = "v1")]
-[Tags("categories")]
+[Tags("Categories")]
 public class CategoryDeleteController(ICategoryRepository categoryRepository) : CategoryController(categoryRepository)
 {
-    [HttpDelete("{id}")]
-
+    [HttpDelete]
+    [ApiExplorerSettings(IgnoreApi = true)]
     public async Task<IActionResult> Delete(int id)
     {
-        var category = await _categoryRepository.CheckExistence(id);
+        await _service.Remove(id);
 
-        if (category == false)
-        {
-            return NotFound();
-        }
-
-        await _categoryRepository.Delete(id);
-
-        return NotFound();
+        return NoContent();
     }
 }

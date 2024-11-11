@@ -12,16 +12,16 @@ namespace Product_manager.Controllers.V1.Orders;
 public class OrderPostController(IOrderRepository orderRepository) : OrderController(orderRepository)
 {
     [HttpPost]
-        public async Task<IActionResult> AddOrder(OrderDTO newOrder)
+    public async Task<IActionResult> AddOrder(OrderDTO newOrder)
+    {
+        if (!ModelState.IsValid)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            await orderRepository.Create(newOrder);
-
-            return Ok("Order added successfully.");
+            return BadRequest(ModelState);
         }
+
+        await orderRepository.Create(newOrder);
+
+        return Ok("Order added successfully.");
+    }
 
 }

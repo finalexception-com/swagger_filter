@@ -7,20 +7,20 @@ namespace Product_manager.Controllers.V1.Categories;
 [ApiController]
 [Route("api/v1/categories")]
 [ApiExplorerSettings(GroupName = "v1")]
-[Tags("categories")]
+[Tags("Categories")]
 public class CateforyPostController(ICategoryRepository categoryRepository) : CategoryController(categoryRepository)
 {
     [HttpPost]
-        public async Task<IActionResult> AddCategory(CategoryDTO newCategory)
+    public async Task<IActionResult> AddCategory(CreateCategoryDTO newCategory)
+    {
+        if (!ModelState.IsValid)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            await categoryRepository.Create(newCategory);
-
-            return Ok("Category added successfully.");
+            return BadRequest(ModelState);
         }
+
+        await categoryRepository.Create(newCategory);
+
+        return Ok("Category added successfully.");
+    }
 
 }

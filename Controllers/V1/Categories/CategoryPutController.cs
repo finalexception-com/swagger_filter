@@ -7,7 +7,7 @@ namespace Product_manager.Controllers.V1.Categories;
 [ApiController]
 [Route("api/v1/categories")]
 [ApiExplorerSettings(GroupName = "v1")]
-[Tags("categories")]
+[Tags("Categories")]
 public class CategoryPutController(ICategoryRepository categoryRepository) : CategoryController(categoryRepository)
 {
     [HttpPut]

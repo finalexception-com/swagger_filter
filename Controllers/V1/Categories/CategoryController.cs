@@ -7,6 +7,6 @@ namespace Product_manager.Controllers.V1.Categories;
 [Route("api/v1/productcategories")]
 public class CategoryController(ICategoryRepository categoryRepository) : ControllerBase
 {
-    protected readonly ICategoryRepository _categoryRepository = categoryRepository;
+    protected readonly ICategoryRepository _service = categoryRepository;
 }
 

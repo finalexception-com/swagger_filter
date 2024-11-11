@@ -10,7 +10,7 @@ public class OrderDTO
 
     [Required]
     public int ClientId { get; set; }
-    
+
     [Required]
     [MaxLength(250)]
     public string ClientName { get; set; }

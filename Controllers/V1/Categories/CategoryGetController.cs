@@ -7,21 +7,21 @@ namespace Product_manager.Controllers.V1.Categories;
 [ApiController]
 [Route("api/v1/categories")]
 [ApiExplorerSettings(GroupName = "v1")]
-[Tags("categories")]
+[Tags("Categories")]
 public class CategoryGetController(ICategoryRepository categoryRepository) : CategoryController(categoryRepository)
 {
 
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Category>>> GetAll()
     {
-        var category = await _categoryRepository.GetAll();
+        var category = await _service.GetAll();
         return Ok(category);
     }
 
     [HttpGet("{id}")]
     public async Task<ActionResult<Category>> GetById(int id)
     {
-        var category = await _categoryRepository.GetById(id);
+        var category = await _service.GetById(id);
 
         if (category == null)
         {
@@ -38,7 +38,7 @@ public class CategoryGetController(ICategoryRepository categoryRepository) : Cat
             return BadRequest("La palabra clave no puede estar vacia");
         }
 
-        var category = await _categoryRepository.GetByKeyword(keyword);
+        var category = await _service.GetByKeyword(keyword);
 
         if (!category.Any())
         {

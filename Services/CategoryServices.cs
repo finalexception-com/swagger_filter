@@ -14,9 +14,9 @@ public class CategoryServices : ICategoryRepository
     {
         _context = context;
     }
-    public async Task<Category> Create(CategoryDTO categoryDTO)
+    public async Task<Category> Create(CreateCategoryDTO categoryDTO)
     {
-        var category = new Category(categoryDTO.Name, categoryDTO.Description);
+        var category = new Category(categoryDTO.CreateName, categoryDTO.Description);
         _context.Categories.Add(category);
         await _context.SaveChangesAsync();
         return category;
@@ -64,7 +64,7 @@ public class CategoryServices : ICategoryRepository
         category.Description = categoryDTO.Description?.ToLower().Trim();
         await _context.SaveChangesAsync();
     }
-    public async Task<bool> CheckExistence(int id)
+    public async Task<bool> Remove(int id)
     {
         try
         {
